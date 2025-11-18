@@ -6,7 +6,7 @@ Q1
 CREATE TABLE Students_1NF (
     StudentID numeric,
     Name VARCHAR(100),
-    PhoneNumber VARCHAR(20),
+    PhoneNumber VARCHAR(20)
 );
 
 
@@ -25,7 +25,7 @@ Q2
 CREATE TABLE OrderItems_1NF (
     OrderID VARCHAR(10),
     Customer VARCHAR(100),
-    Item VARCHAR(100),
+    Item VARCHAR(100)
 );
 
 
@@ -42,7 +42,7 @@ Q3
 CREATE TABLE EmployeeSkills_1NF (
     EmpID INT,
     EmpName VARCHAR(100),
-    Skill VARCHAR(50),
+    Skill VARCHAR(50)
 );
 
 
@@ -75,7 +75,7 @@ INSERT INTO Customers_1NF (CustID, Name, City, State, Country) VALUES
 
 CREATE TABLE Students (
     StudentID INT PRIMARY KEY,
-    StudentName VARCHAR(100) NOT NULL
+    StudentName VARCHAR(100)
 );
 
 CREATE TABLE Courses (
@@ -88,9 +88,8 @@ CREATE TABLE StudentMarks (
     StudentID INT,
     CourseID VARCHAR(10),
     Marks INT,
-    PRIMARY KEY (StudentID, CourseID),
-    FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
-    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
+    PRIMARY KEY (StudentID, CourseID)
+    
 );
 
 
@@ -159,8 +158,7 @@ CREATE TABLE EmployeeAssignments (
     ProjectID VARCHAR(10),
     HoursWorked INT,
     PRIMARY KEY (EmpID, ProjectID),
-    FOREIGN KEY (EmpID) REFERENCES Employees(EmpID),
-    FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
+   
 );
 
 #Q8
@@ -180,8 +178,7 @@ CREATE TABLE DriverRoutes (
     DriverID VARCHAR(10),
     RouteID VARCHAR(10),
     PRIMARY KEY (DriverID, RouteID),
-    FOREIGN KEY (DriverID) REFERENCES Drivers(DriverID),
-    FOREIGN KEY (RouteID) REFERENCES Routes(RouteID)
+    
 );
 
 INSERT INTO Drivers (DriverID, DriverName) VALUES
@@ -217,15 +214,12 @@ CREATE TABLE OrderDetails (
     OrderID VARCHAR(10),
     ProductID VARCHAR(10),
     Quantity INT,
-    -- This key assumes an order can't have the same product
-    -- with the same quantity listed twice.
     PRIMARY KEY (OrderID, ProductID, Quantity),
-    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
-    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+   
 );
 
 
--- Insert into the independent tables first
+
 INSERT INTO Orders (OrderID, CustomerName, City) VALUES
 ('O1', 'Ravi', 'Mumbai'),
 ('O2', 'Meena', 'Delhi');
@@ -235,7 +229,7 @@ INSERT INTO Products (ProductID, ProductName, Price) VALUES
 ('P2', 'Book', 100),
 ('P3', 'Bag', 500);
 
--- Now insert into the junction table, splitting the 1NF violations
+
 INSERT INTO OrderDetails (OrderID, ProductID, Quantity) VALUES
 ('O1', 'P1', 2),
 ('O1', 'P1', 3),
