@@ -1,0 +1,12 @@
+
+Find the age of a person till curdate() in the format of 
+X years, x months, x days
+
+select concat(
+timestampdiff(year,'2003-12-08',now()),
+' years, ',
+timestampdiff(month,'2003-12-08',now()),
+' months, ',
+timestampdiff(day,'2003-12-08',now()),
+' days.'
+) as days_survived;
