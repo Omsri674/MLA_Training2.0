@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+    xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+  <display-name>Archetype Created Web Application</display-name>
+  
+  <context-param>
+  		<param-name>url</param-name><param-value>jdbc:mysql://localhost:3306/mla</param-value>
+  	</context-param>
+  	
+  	<context-param>
+  		<param-name>user</param-name><param-value>root</param-value>
+  	</context-param>
+  	
+  	<context-param>
+  		<param-name>pwd</param-name><param-value>root@39</param-value>
+  	</context-param>
+  	
+  	<context-param>
+  		<param-name>driver</param-name><param-value>com.mysql.cj.jdbc.Driver</param-value>
+  	</context-param>
+  
+  <servlet>
+  <servlet-name>DbConection</servlet-name>
+  	<servlet-class>com.omsri.DBServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>DbConection</servlet-name>
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
